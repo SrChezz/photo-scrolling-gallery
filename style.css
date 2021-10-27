@@ -5,6 +5,8 @@
     font-family: sans-serif;
     text-align: center;
     font-family: 'Roboto', sans-serif;
+
+    --gold-color: #F0A500;
 }
 
 h1, h2, h3 {
@@ -12,7 +14,7 @@ h1, h2, h3 {
 }
 
 .gold {
-    color: #F0A500;
+    color: var(--gold-color);
 }
 
 main {
@@ -74,7 +76,7 @@ main {
     height: 50px;
     
     padding: 10px;
-    background-color: #F0A500;
+    background-color: var(--gold-color);
     display: flex;
     justify-content: space-around;
     border-bottom-left-radius: 15px;
@@ -147,6 +149,27 @@ main {
 .section .metadata > div {
     display: flex;
     justify-content: space-between;
+}
+
+footer {
+    margin-top: 20px;
+    font-weight: 700;
+    color: var(--gold-color);
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+footer a {
+    color: var(--gold-color);
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+footer a:hover {
+    color: rgb(210, 253, 255);
+    transform: rotate(360deg);
 }
 
 @media (pointer:coarse) {

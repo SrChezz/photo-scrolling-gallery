@@ -40,33 +40,42 @@ const mouseUpHandler = function () {
 container.addEventListener("mousedown", mouseDownHandler)
 
 let isScrolling;
-container.addEventListener("scroll", function(e) {
+if (!isTouchDevice()) {
+    container.addEventListener("scroll", function(e) {
 
-    // Clear our timeout throughout the scroll
-    clearTimeout(isScrolling);
-
-    isScrolling = setTimeout(function() {
-
-        if (container.scrollTop % container.clientHeight != 0) {
-            let movement = (container.scrollTop - (container.scrollTop % container.clientHeight))
-
-            if ((container.scrollTop % container.clientHeight) < (container.clientHeight / 2)) {
-                container.scrollTop = movement + container.clientHeight; 
-            } else if ((container.scrollTop % container.clientHeight) < (container.clientHeight - 50)) {
-                container.scrollTop = movement; 
-            }
-
-
-            // console.log("Now, this also should look fine", container.scrollTop % container.clientHeight, container.clientHeight / 2)
-        } else {
-            // console.log("this should look fine")
-        }
-        
-
-     }, 500);
-
+        // Clear our timeout throughout the scroll
+        clearTimeout(isScrolling);
     
-}, false)
+        isScrolling = setTimeout(function() {
+    
+            if (container.scrollTop % container.clientHeight != 0) {
+                let movement = (container.scrollTop - (container.scrollTop % container.clientHeight))
+    
+                if ((container.scrollTop % container.clientHeight) < (container.clientHeight / 2)) {
+                    container.scrollTop = movement + container.clientHeight; 
+                } else if ((container.scrollTop % container.clientHeight) < (container.clientHeight - 50)) {
+                    container.scrollTop = movement; 
+                }
+    
+    
+                // console.log("Now, this also should look fine", container.scrollTop % container.clientHeight, container.clientHeight / 2)
+            } else {
+                // console.log("this should look fine")
+            }
+            
+    
+         }, 500);
+    
+        
+    }, false)
+}
+
+
+function isTouchDevice() {
+    return (('ontouchstart' in window) ||
+       (navigator.maxTouchPoints > 0) ||
+       (navigator.msMaxTouchPoints > 0));
+  }
 
 
 
